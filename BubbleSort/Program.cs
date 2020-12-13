@@ -8,16 +8,21 @@ namespace BubbleSort
         {
             int[] nums = { 5, 1, 2, 3, 4, 6, 8, 9, 7 };
             int temp;
-
-            for (int i = 0; i < nums.Length - 1; i++)
+            for (int j = 0; j < nums.Length - 1; j++)
             {
-                if (nums[i] > nums[i + 1])
+                int canary = 0;
+                for (int i = 0; i < nums.Length - 1; i++)
                 {
-                    temp = nums[i];
-                    nums[i] = nums[i + 1];
-                    nums[i + 1] = temp;
-
+                    if (nums[i] > nums[i + 1])
+                    {
+                        temp = nums[i];
+                        nums[i] = nums[i + 1];
+                        nums[i + 1] = temp;
+                        canary = 1;
+                    }
                 }
+                if(canary == 0) { break; }
             }
-    } }
+        }
+    }
 }
